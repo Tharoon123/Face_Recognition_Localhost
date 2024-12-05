@@ -1,5 +1,7 @@
 const imageUpload = document.getElementById('imageUpload')
 
+//test
+
 Promise.all([
   faceapi.nets.faceRecognitionNet.loadFromUri('http://192.168.56.1:8080'),
   faceapi.nets.faceLandmark68Net.loadFromUri('http://192.168.56.1:8080'),
