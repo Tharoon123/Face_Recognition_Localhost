@@ -3,9 +3,9 @@ const imageUpload = document.getElementById('imageUpload')
 //test
 
 Promise.all([
-  faceapi.nets.faceRecognitionNet.loadFromUri('http://192.168.56.1:8080'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('http://192.168.56.1:8080'),
-  faceapi.nets.ssdMobilenetv1.loadFromUri('http://192.168.56.1:8080')
+  faceapi.nets.faceRecognitionNet.loadFromUri('http://192.168.1.5:8081'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('http://192.168.1.5:8081'),
+  faceapi.nets.ssdMobilenetv1.loadFromUri('http://192.168.1.5:8081')
 ]).then(start)
 
 async function start() {
@@ -51,7 +51,7 @@ function loadLabeledImages() {
     labels.map(async label => {
       const descriptions = []
       for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`http://192.168.56.1:8081/${label}/${i}.jpg`)
+        const img = await faceapi.fetchImage(`http://192.168.1.5:8080/${label}/${i}.jpg`)
         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
         descriptions.push(detections.descriptor)
       }
